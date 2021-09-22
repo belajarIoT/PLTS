@@ -29,13 +29,7 @@ void setup()
     Serial.println("RTC tidak terbaca");
     while (1);
   }
-  if (rtc.lostPower()) {
-    //atur waktu sesuai waktu pada komputer
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    //atur waktu secara manual
-    // January 21, 2019 jam 10:30:00
-    // rtc.adjust(DateTime(2019, 1, 25, 10, 30, 0));
-  }
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
   pinMode(53, OUTPUT);
   Serial.print("Initializing SD card...");
   if (!SD.begin()) {
